@@ -54,3 +54,90 @@ try {
 catch (err) {
 	console.log(err);
 }
+
+// Testing deepEquality
+console.log("\nTesting deepEquality:");
+try {
+	var obj1 = {
+		'a': 0,
+		'b': 1,
+		'c': 2,
+		1: 'a',
+		2: 'b',
+		3: 'c'
+	};
+
+	var obj2 = {
+		1: 'a',
+		2: 'b',
+		3: 'c',
+		'a': 0,
+		'b': 1,
+		'c': 2
+	};
+	console.log(utilities.deepEquality(obj1, obj2));	// true
+
+	obj2.c = 3;
+	console.log(utilities.deepEquality(obj1, obj2));	// false
+	obj2.c = 2;
+	
+	var obj3 = {
+		'd': 3,
+		'e': 4,
+		'f': 5
+	};
+
+	var obj4 = {
+		'd': 3,
+		'e': 4,
+		'f': 5
+	};
+
+	obj1['obj'] = obj3;
+	obj2['obj'] = obj4;
+	console.log(utilities.deepEquality(obj1, obj2));	// true
+
+	obj3.d = -3;
+	console.log(utilities.deepEquality(obj1, obj2));	// false
+
+	console.log(utilities.deepEquality(obj1, -3));		// Error
+}
+catch (err) {
+	console.log(err);
+}
+
+// Testing uniqueElements
+console.log("\nTesting uniqueElements:");
+try {
+	var testArr = ["a", "a", "b", "a", "b", "c"];
+	console.log(utilities.uniqueElements(testArr));	// 3
+
+	testArr = [1, "1", 1.0, "a"];
+	console.log(utilities.uniqueElements(testArr));	// 3
+
+	testArr = ["a", "a", "a", "a", "a", "a", "a"];
+	console.log(utilities.uniqueElements(testArr));	// 1
+
+	testArr = [];
+	console.log(utilities.uniqueElements(testArr));	// 0
+
+	testArr = {
+		0: 'a'
+	};
+	console.log(utilities.uniqueElements(testArr));	// Error
+}
+catch (err) {
+	console.log(err);
+}
+
+// Testing countOfEachCharacterInString
+console.log("\nTesting countOfEachCharacterInString:");
+try {
+	var test = "Hello, the pie is in the oven";
+	var charMap = countOfEachCharacterInString(test);
+	console.log(test);
+	console.log(charMap);
+}
+catch (err) {
+	console.log(err);
+}
