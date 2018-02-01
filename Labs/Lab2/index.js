@@ -134,7 +134,29 @@ catch (err) {
 console.log("\nTesting countOfEachCharacterInString:");
 try {
 	var test = "Hello, the pie is in the oven";
-	var charMap = countOfEachCharacterInString(test);
+	var charMap = utilities.countOfEachCharacterInString(test);
+	console.log(test);
+	console.log(charMap);
+
+	test = "My name is Edward Taber McFarlin IV, but I go by Taber.";
+	charMap = utilities.countOfEachCharacterInString(test);
+	console.log(test);
+	console.log(charMap);
+
+	var test = "My mom decided she liked the name Taber.";
+	var charMap = utilities.countOfEachCharacterInString(test);
+	console.log(test);
+	console.log(charMap);
+
+	var test = "It's 5:30AM because my roommate was up doing Systems so I figured I might as well be productive.";
+	var charMap = utilities.countOfEachCharacterInString(test);
+	console.log(test);
+	console.log(charMap);
+
+	var test = {
+		"Grade": "A?"
+	};
+	var charMap = utilities.countOfEachCharacterInString(test);
 	console.log(test);
 	console.log(charMap);
 }

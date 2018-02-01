@@ -15,18 +15,15 @@ function deepEquality(obj1, obj2) {
 		return false;
 
 	// Checks that all keys match
-	var match_found;
 	for (var i = 0; i < keys1.length; i++) {
-		match_found = false;
 		
 		for (var j = 0; j < keys1.length; j++) {
 			if (keys1[i] === keys2[j]) {
-				match_found = true;
 				break;
 			}
 		}
 
-		if (!match_found)
+		if (j == keys1.length)
 			return false;
 	}
 
@@ -79,12 +76,19 @@ function uniqueElements (arr) {
 
 function countOfEachCharacterInString (str) {
 	// Check argument is a String
-	if (arguments.length != 1 || typeof str === 'string')
+	if (arguments.length != 1 || typeof str !== 'string')
 		throw 'deepEquality takes exactly one arguments that is a String.'
 	
 	// Itterates through string and creates or
 	// increments counter on keys as it sees characters
 	var charMap = Object();
+
+	for (var i = 0; i < str.length; i++) {
+		if (str[i] in charMap)
+			charMap[str[i]]++;
+		else
+			charMap[str[i]] = 1;
+	}
 
 	return charMap
 }
