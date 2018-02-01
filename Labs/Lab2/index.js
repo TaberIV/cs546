@@ -41,3 +41,16 @@ try {
 catch (err) {
 	console.log(err);
 }
+
+// Testing surfaceAreaOfSphere
+console.log("\nTesting surfaceAreaOfRectangularPrism:");
+try {
+	console.log(geometry.surfaceAreaOfSphere(1)); 		// 12.566...
+	console.log(geometry.surfaceAreaOfSphere(5)); 		// 314.159...
+	console.log(geometry.surfaceAreaOfSphere(3));		// 113.0967...
+	console.log(geometry.surfaceAreaOfSphere(123));		// 190116.621...
+	console.log(geometry.surfaceAreaOfSphere(0));		// Error
+}
+catch (err) {
+	console.log(err);
+}

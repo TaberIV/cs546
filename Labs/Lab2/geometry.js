@@ -15,7 +15,7 @@ const checkDimensions = (args, numDimensions) => {
 	}
 }
 
-// Exported functions
+// Exports
 function volumeOfRectangularPrism(length, width, height) {
 	checkDimensions(arguments, 3);
 
@@ -37,11 +37,12 @@ function volumeOfSphere(radius) {
 function surfaceAreaOfSphere(radius) {
 	checkDimensions(arguments, 1);
 
-	return (4 / 3) * Math.PI * Math.pow(radius, 3);
+	return 4 * Math.PI * Math.pow(radius, 2);
 }
 
 module.exports = {
 	volumeOfRectangularPrism,
 	surfaceAreaOfRectangularPrism,
-	volumeOfSphere
+	volumeOfSphere,
+	surfaceAreaOfSphere
 };
