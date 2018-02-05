@@ -100,7 +100,7 @@ try {
 	obj3.d = -3;
 	console.log(utilities.deepEquality(obj1, obj2));	// false
 
-	console.log(utilities.deepEquality(obj1, -3));		// Error
+	console.log(utilities.deepEquality(obj1, null));		// Error
 }
 catch (err) {
 	console.log(err);
