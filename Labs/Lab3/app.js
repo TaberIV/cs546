@@ -1,21 +1,14 @@
 const fileData = require("./fileData");
 const textMetrics = require("./textMetrics");
 
-async function main(path, obj) {
-	try {
-		fileData.saveJSONToFile(path, obj);
-	} catch (error) {
-		throw error;
+async function main() {
+	const numChapters = 3
+	for (var i = 0; i < numChapters; i++) {
+		const path = `chapter${i + 1}.txt`;
+		console.log(path);
+
+		
 	}
 }
 
-console.log("Test begin.");
-
-const obj = {
-	"fuck": "asyncroniysitee",
-	"chirs": "is doing systems",
-	"level_of_hope": 3
-}
-main("testWrite.txt", obj);
-
-console.log("Test complete.");
+main();

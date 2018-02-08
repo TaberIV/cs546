@@ -31,7 +31,7 @@ async function saveStringToFile(path, text) {
 	if (!path || typeof path !== 'string')
 		throw "You must provide a path as a string";
 	
-	if (!text || typeof text !== 'string')
+	if (typeof text !== 'string')
 		throw "You must provide text to write as a string";
 
 	try {
