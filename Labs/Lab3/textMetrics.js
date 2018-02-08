@@ -23,8 +23,8 @@ function replaceCharAt(text, str, index) {
 };
 
 function simplify(text) {
-	if (!text || typeof text !== 'string')
-		throw "You must provide text to simplify";
+	if (typeof text !== 'string')
+		throw "You must provide a string to simplify";
 
 	for (var i = 0; i < text.length; i++) {
 		var char = text[i];
@@ -33,8 +33,9 @@ function simplify(text) {
 			if (i == 0 || i == text.length - 1 || text[i - 1] == ' ') {
 				text = removeCharAt(text, i);
 				i--;
-			} else
-				replaceCharAt(text, ' ', i);
+			} else if (char !== ' ') {
+				text = replaceCharAt(text, ' ', i);
+			}
 		}
 		else if (char >= 'A' && char <= 'Z') {
 			char = String.fromCharCode(char.charCodeAt(0) + 'a'.charCodeAt(0) - 'A'.charCodeAt(0));
@@ -49,8 +50,55 @@ function simplify(text) {
 	return text;
 }
 
-function createMetrics(text) {
+function addWord (metrics, word) {
+	if (word) { 
+		metrics.totalWords++;
 
+		if (word in metrics.wordOccurences)
+			metrics.wordOccurences[word]++;
+		else {
+			metrics.wordOccurences[word] = 1;
+			metrics.uniqueWords++;
+		}
+
+		if (word.length >= 6)
+			metrics.longWords++;
+	}
+
+	return metrics;
+}
+
+function createMetrics(text) {
+	if (typeof text !== 'string')
+		throw "You must provide a string to create metrics";
+
+	text = simplify(text);
+	
+	var metrics = {
+		"totalLetters": 0,
+		"totalWords": 0,
+		"uniqueWords": 0,
+		"longWords": 0,
+		"averageWordLength": 0,
+		"wordOccurences": {}
+	};
+	var word = "";
+
+	for (var i = 0; i < text.length; i++) {
+		const char = text[i];
+
+		if (char != ' ') {
+			metrics.totalLetters++;
+			word += char;
+		}
+		else {
+			metrics = addWord(metrics, word);
+			word = "";
+		}
+	}
+
+	metrics = addWord(metrics, word);
+	return metrics;
 }
 
 module.exports = {
