@@ -89,6 +89,8 @@ function createMetrics(text) {
 	}
 
 	metrics = addWord(metrics, word);
+	metrics.averageWordLength = metrics.totalLetters / metrics.totalWords;
+	
 	return metrics;
 }
 
