@@ -6,12 +6,8 @@ async function getFileAsString(path) {
 	if (!path || typeof path !== 'string')
 		throw "You must provide a path as a string";
 
-	try {
-		const data = await fs.readFileAsync(path, "utf8");
-		return data;
-	} catch (error) {
-		throw error;
-	}
+	const data = await fs.readFileAsync(path, "utf8");
+	return data;
 }
 
 async function getFileAsJSON(path) {
