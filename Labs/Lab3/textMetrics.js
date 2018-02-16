@@ -1,24 +1,15 @@
 function removeCharAt(text, index) {
-	try {
-		return replaceCharAt(text, '', index);
-	}
-	catch (error) {
-		throw error;
-	}
+	return replaceCharAt(text, '', index);
 }
 
 function replaceCharAt(text, str, index) {
-	try {
-		if (!text || typeof text !== 'string')
-			throw "You must provide text to change";
-		if (typeof text !== 'string')
-			throw "Must replace character with some string";
-		if (index < 0 || index >= text.length)
-			throw "index is outside bounds of string";
-	} catch (error) {
-		console.trace();
-		throw error;
-	}
+	if (!text || typeof text !== 'string')
+		throw "You must provide text to change";
+	if (typeof text !== 'string')
+		throw "Must replace character with some string";
+	if (index < 0 || index >= text.length)
+		throw "index is outside bounds of string";
+
 	return text.substring(0, index) + str + text.substring(index + 1, text.length);
 };
 
@@ -98,6 +89,8 @@ function createMetrics(text) {
 	}
 
 	metrics = addWord(metrics, word);
+	metrics.averageWordLength = metrics.totalLetters / metrics.totalWords;
+	
 	return metrics;
 }
 

@@ -8,24 +8,36 @@ async function main() {
 		console.log(chapter);
 
 		try {
-			throw "NEVERMIND";
 			console.log(await fileData.getFileAsJSON(chapter + ".result.json"));
 		} catch (error) {
 			console.log(chapter + ".result.json does not exist, or is invalid.")
 			
 			console.log(`Loading ${chapter}.txt`);
-			var text = await fileData.getFileAsString(chapter + ".txt");
-			
+			try{
+				var text = await fileData.getFileAsString(chapter + ".txt");
+			} catch (error) {
+				console.log(error);
+			}
+
 			console.log(`Saving ${chapter}.debug.txt`)
-			text = textMetrics.simplify(text);
-			await fileData.saveStringToFile(`${chapter}.debug.txt`, text);
+			try{
+				text = textMetrics.simplify(text);
+				await fileData.saveStringToFile(`${chapter}.debug.txt`, text);
+			} catch (error) {
+				console.log(error);
+			}
+			
 			
 			console.log("Running metrics");
 			const metrics = textMetrics.createMetrics(text);
+			console.log(metrics);
 
 			console.log("saving metrics to file");
-			await fileData.saveJSONToFile(`${chapter}.result.json`, metrics);
-			console.log(metrics);
+			try {
+				await fileData.saveJSONToFile(`${chapter}.result.json`, metrics);
+			} catch (error) {
+				console.log(error);
+			}
 		}
 
 		console.log('');

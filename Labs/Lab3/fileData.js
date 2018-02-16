@@ -14,13 +14,9 @@ async function getFileAsJSON(path) {
 	if (!path || typeof path !== 'string')
 		throw "You must provide a path as a string";
 
-	try {
-		const data = await fs.readFileAsync(path, "utf8");
-		const asObject = await JSON.parse(data);
-		return asObject;
-	} catch (error) {
-		throw error;
-	}
+	const data = await fs.readFileAsync(path, "utf8");
+	const asObject = await JSON.parse(data);
+	return asObject;
 }
 
 async function saveStringToFile(path, text) {
@@ -30,12 +26,9 @@ async function saveStringToFile(path, text) {
 	if (typeof text !== 'string')
 		throw "You must provide text to write as a string";
 
-	try {
-		await fs.writeFileAsync(path, text);
-		return true;
-	} catch (error) {
-		throw error;
-	}
+
+	await fs.writeFileAsync(path, text);
+	return true;
 }
 
 async function saveJSONToFile(path, obj) {
@@ -45,13 +38,9 @@ async function saveJSONToFile(path, obj) {
 	if (!obj || typeof obj !== 'object')
 		throw "You must provide and object to write";
 
-	try {
-		const text = JSON.stringify(obj);
-		await fs.writeFileAsync(path, text);
-		return true;
-	} catch (error) {
-		throw error;
-	}
+	const text = JSON.stringify(obj);
+	await fs.writeFileAsync(path, text);
+	return true;
 }
 
 module.exports = {
