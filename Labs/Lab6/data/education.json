@@ -1,0 +1,29 @@
+{
+	"college": {
+		"schoolName": "Stevens Institute of Technology",
+		"degree": "CS Degree",
+		"favoriteClass": "CS 546 - Web Programming (do I get extra points now?)",
+		"moment": "doing this assignment"
+	},
+
+	"highSchool": {
+		"schoolName": "Brien McMahon",
+		"degree": "High School Diploma",
+		"favoriteClass": "AP Computer Science",
+		"moment": "Teaching all of my classmates in AP CS beceause the teacher was bad"
+	},
+
+	"middleSchool": {
+		"schoolName": "Roton",
+		"degree": "A useless piece of paper",
+		"favoriteClass": "Pre-Algebra",
+		"moment": "Those wonderfully awkward middle school dances"
+	},
+
+	"elementarySchool": {
+		"schoolName": "Rowayton",
+		"degree": "Probably another useless piece of paper",
+		"favoriteClass": "4th Grade",
+		"moment": "When our 4th grade teacher told us point blank Santa wasn't real"
+	}
+}
