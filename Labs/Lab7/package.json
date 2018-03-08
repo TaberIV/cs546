@@ -6,6 +6,6 @@
   "scripts": {
     "start": "node app.js"
   },
-  "author": "E. Taber McFarlin",
+  "author": "Edward McFarlin <emcfarli@stevens.edu>",
   "license": "ISC"
 }
