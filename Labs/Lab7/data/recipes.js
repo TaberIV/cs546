@@ -4,8 +4,8 @@ const uuidv4 = require('uuid/v4');
 
 // Returns only the id and title of all recipies
 async function getAllRecipes() {
-	var recepieCollection = await recepies();
-	return await recipeCollection.find({}, {id: 1, title: 1}).toArray();
+	var recepieCollection = await recipes();
+	return await recepieCollection.find({}, {id: 1, title: 1}).toArray();
 }
 
 // Returns all data of indicated recipe
@@ -29,19 +29,22 @@ async function createRecipe(title, ingredients, steps) {
 	if (typeof title !== "string") throw "Must provide title as string"
 	if (!Array.isArray(ingredients)) throw "Must provide ingredients as Array"
 	if (!Array.isArray(steps)) throw "Must provide steps as Array"
-	
+	console.log(Object.keys(ingredients[i])[0]);
+	console.log(Object.keys(ingredients[i])[1]);
 	try {
-		for (let i = 0; i < ingredients.size(); i++) {
-			if (Object.keys(ingredients[i])[0])
-				throw "";
-		}
+		// if (Object.keys(ingredients[i])[0] != "name")
+		// 	throw "";
+		// if (Object.keys(ingredients[i])[1] != "amount")
+		// 	throw "";
+		console.log(Object.keys(ingredients[i])[0]);
+		console.log(Object.keys(ingredients[i])[1]);
 	} catch (e) {
 		throw "Ingredients must be an array of objects with name and amount.";
 	}
-
+	
 	// Get recipes
 	let recipeCollection = await recipes();
-
+	
 	// Create new recipe
 	const newRecipe = {
 		_id: uuidv4(),
@@ -51,7 +54,8 @@ async function createRecipe(title, ingredients, steps) {
 	};
 
 	// Add new recipe to database
-	return await getRecipeById(newRecipe._id);
+	const insertInformation = await recipeCollection.insertOne(newRecipe);
+	//return await getRecipeById(newRecipe._id);
 }
 
 async function replaceRecipe(id, newRecipe) {
@@ -62,10 +66,10 @@ async function replaceRecipe(id, newRecipe) {
 	if (!Array.isArray(newRecipe.steps)) throw "Must provide steps as Array";
 
 	try {
-		for (let i = 0; i < newRecipe.ingredients.size(); i++) {
-			if (Object.keys(ingredients[i])[0])
-				throw "";
-		}
+		if (Object.keys(ingredients[i])[0] != "name")
+			throw "";
+		if (Object.keys(ingredients[i])[1] != "amount")
+			throw "";
 	} catch (e) {
 		throw "Ingredients must be an array of objects with name and amount.";
 	}
@@ -81,4 +85,13 @@ async function updateRecipe(id, updates) {
 
 async function deleteRecipe(id) {
 
+}
+
+module.exports = {
+	getAllRecipes,
+	getRecipeById,
+	createRecipe,
+	replaceRecipe,
+	updateRecipe,
+	deleteRecipe
 }

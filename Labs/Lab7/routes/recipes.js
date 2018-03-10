@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const data = require("../data");
-const recipeData = data.recipes;
+const recipeData = require("../data/recipes");
 
-router.get("/", async(req, res) => {
+router.get("/", async (req, res) => {
     try {
-        const recipeList = await recipeData.getAllIDAndTitleRecipes();
+        const recipeList = await recipeData.getAllRecipes();
         res.json(recipeList);
     } catch (e) {
+        console.log(e);
         res.status(500).json({error: e});
     }
 });
 
 router.get("/:id", async(req, res) => {
     try {
-        let recipe = await recipeData.getRecipeByID(req.params.id);
+        let recipe = await recipeData.getRecipeById(req.params.id);
         res.json(recipe); 
     } catch (e) {
         res.status(404).json({error: "Recipe not found"});

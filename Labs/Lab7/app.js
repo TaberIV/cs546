@@ -7,6 +7,6 @@ app.use(body_parser.json());
 configRoutes(app);
 
 app.listen(3000, () => {
-	console.log("Server launced...");
+	console.log("Server launched...");
 	console.log("Routes running on http://localhost:3000");
 });
