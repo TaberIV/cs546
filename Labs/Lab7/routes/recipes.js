@@ -43,7 +43,7 @@ router.put("/:id", async(req, res) => {
 			let updatedRecipe = await recipeData.replaceRecipe(req.params.id, newRecipeData);
 			res.json(updatedRecipe);
 		} catch (e) {
-		console.log(e);
+			console.log(e);
 			res.status(500).json({error: e});
 		}
 	} catch (e) {
@@ -61,7 +61,7 @@ router.patch("/:id", async(req, res) => {
 			let updatedRecipe = await recipeData.updateRecipe(req.params.id, newRecipeData);
 			res.json(updatedRecipe);
 		} catch (e) {
-		console.log(e);
+			console.log(e);
 			res.status(500).json({error: e});
 		}
 	} catch (e) {
@@ -77,7 +77,7 @@ router.delete("/:id", async(req, res) => {
 			let deletionInfo = await recipeData.deleteRecipe(req.params.id);
 			res.json(deletionInfo);
 		} catch (e) {
-		console.log(e);
+			console.log(e);
 			res.status(500).json({ error: e });
 		}
 	} catch (e) {
