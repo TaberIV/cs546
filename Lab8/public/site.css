@@ -1,7 +1,6 @@
 body {
 	background: #FEFEFE;
 	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-	font-size: 15pt;
 }
 
 main {
@@ -18,8 +17,31 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 5px;
 }
 
+h1 {
+	font-size: 24pt;
+}
 
 p {
-	font-size: 1rem;
-	line-height: 2;
+	font-size: 12pt;
+	line-height: 1.5;
+}
+
+label {
+	font-size: 14pt;
+}
+
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: hotpink;
+}
+
+.success {
+	color: #28a745;
+}
+
+.failure {
+	color: #dc3545;
 }
