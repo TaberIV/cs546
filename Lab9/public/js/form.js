@@ -15,5 +15,5 @@ function checkPalindrome(text) {
 }
 
 function getPhrase() {
-	
+	let palindromeForm = document.getElementById("palindrome-form");
 }
