@@ -1,6 +1,8 @@
+const path = require("path");
+
 function constructorMethod(app) {
-	app.use("/", () => {
-		ar data = {
+	app.use("/", (req, res) => {
+		var data = {
 			title: "The Best Palindrome Checker in the World!"
 		};
 		res.render("form", data);
