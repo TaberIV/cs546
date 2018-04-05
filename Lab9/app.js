@@ -8,11 +8,9 @@
 
 var express = require('express');
 var exphbs = require('express-handlebars');
-var morgan = require('morgan');
 var constructorMethod = require('./routes');
 var app = express();
 
-app.use(morgan('dev'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 

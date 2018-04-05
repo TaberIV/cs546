@@ -1,5 +1,3 @@
-alert("Script Loaded!");
-
 function checkPalindrome(text) {
 	text = text.replace(/[^\w]/g, '').toLowerCase();
 	
@@ -17,14 +15,15 @@ function checkPalindrome(text) {
 }
 
 function formSubmit() {
-	console.log("EFDFSDF");
 	var phrase = document.getElementById('phrase').value;
 	
 	var isPalindrome;
 	if (phrase) {
 		isPalindrome = checkPalindrome(phrase);
-		alert(isPalindrome ? `${phrase} is a palindrome` : `${phrase} is not a palindrome`;
+		alert(isPalindrome ? `${phrase} is a palindrome` : `${phrase} is not a palindrome`);
 	}
 	else
 		alert("You must enter text.")
+
+	return false;
 }
