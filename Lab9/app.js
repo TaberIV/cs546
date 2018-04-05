@@ -16,7 +16,6 @@ app.use(morgan('dev'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Routes
 app.use(express.static(__dirname + '/public'), 'public');
 constructorMethod(app);
 
