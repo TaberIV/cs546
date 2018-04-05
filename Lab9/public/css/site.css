@@ -23,22 +23,33 @@ p {
 	line-height: 1.5;
 }
 
+form {
+	border: 1px solid #AFAFAF;
+	padding: 5px;
+}
+
 label {
 	font-size: 14pt;
 }
 
-a:visited {
-	color: blue;
+ul {
+	list-style-type: circle;
 }
 
-a:hover {
-	color: hotpink;
+footer {
+	background-color: #F0F0F0;
 }
 
-.success {
-	color: #28a745;
+footer p {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-.failure {
-	color: #dc3545;
+
+.is-palindrome {
+	color: #0000FF;
+}
+
+.not-palindrome {
+	color: #FF0000;
 }

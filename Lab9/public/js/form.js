@@ -17,10 +17,16 @@ function checkPalindrome(text) {
 function formSubmit() {
 	var phrase = document.getElementById('phrase').value;
 	
-	var isPalindrome;
 	if (phrase) {
-		isPalindrome = checkPalindrome(phrase);
-		alert(isPalindrome ? `${phrase} is a palindrome` : `${phrase} is not a palindrome`);
+		var isPalindrome = checkPalindrome(phrase);
+
+		// Create list element and add it to attempts
+		var li = document.createElement("li");
+		li.appendChild(document.createTextNode(phrase));
+		li.setAttribute("class", isPalindrome ? "is-palindrome" : "not-palindrome");
+
+		var attempts = document.getElementById("attempts");
+		attempts.appendChild(li);
 	}
 	else
 		alert("You must enter text.")
