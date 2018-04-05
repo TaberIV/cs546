@@ -1,4 +1,3 @@
-const path = require("path");
 alert("Script Loaded!");
 
 function checkPalindrome(text) {

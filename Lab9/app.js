@@ -6,23 +6,19 @@
  * by the Stevens Honor System
  ***************************************/
 
-const express = require("express");
-const app = express();
-const static = express.static(__dirname + '/public');
-const bodyParser = require("body-parser");
+var express = require('express');
+var exphbs = require('express-handlebars');
+var morgan = require('morgan');
+var constructorMethod = require('./routes');
+var app = express();
 
-const configRoutes = require("./routes");
-const exphbs = require("express-handlebars");
+app.use(morgan('dev'));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
-app.use("/public", static);
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-configRoutes(app);
+// Routes
+app.use(express.static(__dirname + '/public')); // Serve js, css, etc
+constructorMethod(app);
 
 app.listen(3000, () => {
 	console.log("Server launched...");
