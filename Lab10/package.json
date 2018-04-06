@@ -1,0 +1,11 @@
+{
+  "name": "lab10",
+  "version": "1.0.0",
+  "description": "Login System",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Edward McFarlin <emcfarli@stevens.edu>",
+  "license": "ISC"
+}
