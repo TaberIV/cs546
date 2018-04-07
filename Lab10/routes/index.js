@@ -10,7 +10,7 @@ function constructorMethod(app) {
 	app.use("/logout", logoutRoute);
 
 	app.use("*", (req, res) => {
-		res.status(404).json({error: "Route not found."});
+		res.status(404).json({error: "Route not found."}); // Make an error HTML page
 	});
 };
 

@@ -1,7 +1,24 @@
 <article>
-	<header>
-		<h2>Welcome to this private page!</h2>
-	</header>
+  <header>
+    <h2>{{user.username}}</h2>
+  </header>
 
-	<p>Don't you feel special?</p>
+  <table class="user-info">
+    <tr>
+      <td width="15%">First Name:</td>
+      <td>{{user.firstname}}</td>
+    </tr>
+    <tr>
+      <td>Last Name:</td>
+      <td>{{user.lastname}}</td>
+    </tr>
+    <tr>
+      <td>Profession:</td>
+      <td>{{user.profession}}</td>
+    </tr>
+    <tr>
+      <td>Bio:</td>
+      <td>{{user.bio}}</td>
+    </tr>
+  </table>
 </article>

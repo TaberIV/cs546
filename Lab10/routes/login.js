@@ -1,13 +1,21 @@
 const express = require("express");
 const router = express.Router();
+const userData = require("../data/users");
 
 router.post("/", async (req, res) => {
-	var authenticated = true; // Replace with checking username/password
+	try {
+		var authenticated = await userData.checkCredentials(req.body.username, req.body.password);
+	} catch (e) {
+		console.log(e);
+	}
 
-	if (authenticated)
+	if (authenticated) {
+		// Todo create cookie
 		res.redirect("/private");
-	else
+	} else {
+		// Todo Add error message
 		res.redirect("/");
+	}
 });
 
 module.exports = router;
