@@ -1,0 +1,43 @@
+body {
+	background: #FEFEFE;
+	font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+	max-width: 75%;
+	margin: auto;
+}
+
+header {
+	border-bottom: 1px solid #AFAFAF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #333;
+	margin-bottom: 5px;
+}
+
+h1 {
+	font-size: 24pt;
+}
+
+p {
+	font-size: 12pt;
+	line-height: 1.5;
+}
+
+form {
+	font-size: 14pt;
+}
+
+ul {
+	list-style-type: circle;
+}
+
+footer {
+	background-color: #F0F0F0;
+	padding: 5px;
+	margin-top: 15px;
+}
+
+footer p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}

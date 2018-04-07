@@ -8,17 +8,22 @@
 
 // Imports
 var express = require('express');
-var expbhs =  require('express-handlebars')
+var exphbs =  require('express-handlebars')
 var configRoutes = require('./routes');
 
-// Config
+// Config app
 var app = express();
-app.set('view-engine', 'handlebars');
 
-app.use(express.static(__dirname + 'public'));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+app.use(express.static(__dirname + '/public'));
 configRoutes(app);
 
 app.listen(3000, () => {
 	console.log("Server launched...");
 	console.log("Routes running on http://localhost:3000");
+
+	// You're welcome Rob
+	if (process && process.send) process.send({done: true});
 });
