@@ -3,20 +3,29 @@ const router = express.Router();
 const userData = require("../data/users");
 
 router.get("/", async (req, res) => {
-	// Replace with cookie checking
-	const username = "masterdetective123";
-	const user = await userData.getUserByUsername(username);
-	authenticated = user != -1;
+	var data = {
+		title: "Error: 403",
+		description: "User is not logged in."
+	}
+	res.status(403).render("error", data);
+
+	var authenticated;
+	try {
+		authenticated = document.cookie && document.cookie.username;
+		const username = document.cookie.username;
+		const user = await userData.getUserByUsername(username);
+	} catch (e) {
+		console.log(e);
+		authenticated = false;
+	}
 
 	if (authenticated) {
-		const data = {
+		data = {
 			title: "User Info",
 			user: user
 		}
 
 		res.render("private", data);
-	} else {
-		res.status(403).json({error: "User is not logged in."}); // Make an error HTML
 	}
 });
 

@@ -38,17 +38,22 @@ async function getUserByUsername(username) {
 			return users[i];
 	}
 
-	return -1;
+	return undefined;
 }
 
 async function checkCredentials(username, password) {
 	if (!username || typeof username != 'string' || !password || typeof password != 'string')
-		throw "username and username must be a non-empty string"
+		throw "username and password must be non-empty strings"
 
-	const user = await getUserByUsername(username);
+	var user;
+	try {
+		user = await getUserByUsername(username);
+	} catch (e) {
+		console.log(e);
+	}
 
 	// Todo: Actually hash the password
-	if (password == user.hashedpassword)
+	if (user && password == user.hashedpassword || user) // Change || to &&
 		return true;
 	else
 		return false;

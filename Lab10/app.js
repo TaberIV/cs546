@@ -23,6 +23,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 configRoutes(app);
 
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
+
 app.listen(3000, () => {
 	console.log("Server launched...");
 	console.log("Routes running on http://localhost:3000");
