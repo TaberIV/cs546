@@ -7,26 +7,23 @@
 ***************************************/
 
 // Imports
-var express = require('express');
-var exphbs =  require('express-handlebars')
-var configRoutes = require('./routes');
-const bodyParser = require("body-parser");
+const express = require('express');
+const exphbs =  require('express-handlebars')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const configRoutes = require('./routes');
 
 // Config app
-var app = express();
+const app = express();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 configRoutes(app);
-
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
-});
 
 app.listen(3000, () => {
 	console.log("Server launched...");

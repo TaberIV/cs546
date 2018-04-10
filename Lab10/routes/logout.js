@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (res, req) => {
+router.get("/", (req, res) => {
 	var data = {
 		title: "Logout"
 	}
-	
-	authenticated = false; // Replace with cookie expiration
 
-	res.render("logout", data);	
+	res.cookie("sessionID", "", {expires: new Date()});
+	res.clearCookie("sessionID");
+
+	res.render("logout", data);
 });
 
 module.exports = router;

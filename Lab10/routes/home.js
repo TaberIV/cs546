@@ -1,20 +1,21 @@
 const express = require("express");
 const router = express.Router();
+const userData = require("../data/users");
 
-router.get("/", (req, res) => {
-	var data = {title: "Home"};
-	res.render('index', data);
-
-	var authenticated = false;
-	// try {
-	// 	authenticated = document.cookie && document.cookie.username;
-	// } catch (e) {
-	// 	console.log(e);
-	// 	authenticated = false;
-	// }
+router.get("/", async (req, res) => {
+	var authenticated;
+	try {
+		var authenticated = await userData.getUserBySessionID(req.cookies.sessionID) !== undefined;
+	} catch (e) {
+		authenticated = false;
+	}
 
 	if (authenticated)
 		res.redirect('/private');
+	else {
+		var data = { title: "Home" };
+		res.render('index', data);
+	}
 });
 
 module.exports = router;

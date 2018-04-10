@@ -3,21 +3,9 @@ const router = express.Router();
 const userData = require("../data/users");
 
 router.get("/", async (req, res) => {
-	var data = {
-		title: "Error: 403",
-		description: "User is not logged in."
-	}
-	res.status(403).render("error", data);
-
-	var authenticated;
-	try {
-		authenticated = document.cookie && document.cookie.username;
-		const username = document.cookie.username;
-		const user = await userData.getUserByUsername(username);
-	} catch (e) {
-		console.log(e);
-		authenticated = false;
-	}
+	const sessionID = req.cookies.sessionID;
+	var user = await userData.getUserBySessionID(sessionID);
+	var authenticated = user !== undefined;
 
 	if (authenticated) {
 		data = {
@@ -26,6 +14,12 @@ router.get("/", async (req, res) => {
 		}
 
 		res.render("private", data);
+	} else {
+		var data = {
+			title: "Error: 403",
+			description: "User is not logged in."
+		}
+		res.status(403).render("error", data);
 	}
 });
 

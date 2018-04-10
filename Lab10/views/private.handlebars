@@ -1,11 +1,13 @@
 <article>
-  <header>
-    <h2>{{user.username}}</h2>
-  </header>
-
   <table class="user-info">
+    <th>
+      <td>
+        <h2>{{user.username}}</h2>
+      </td>
+      <td><a href="/logout">Not {{user.username}}? Logout.</a></td>
+    </th>
     <tr>
-      <td width="15%">First Name:</td>
+      <td>First Name:</td>
       <td>{{user.firstname}}</td>
     </tr>
     <tr>
