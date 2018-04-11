@@ -24,8 +24,11 @@ router.post("/", async (req, res) => {
 		res.redirect("/private");
 	} else {
 		// Todo Add error message
-		console.log(error_message);
-		res.redirect("/");
+		var data = {
+			title: "Home",
+			error: error_message
+		}
+		res.render("index", data);
 	}
 });
 

@@ -27,6 +27,27 @@ form {
 	font-size: 14pt;
 }
 
+.error {
+	border-radius: 25px;
+	border: 2px solid #e03a3a;
+    background: #F44542;
+    padding: 15px; 
+    width: max-content;
+    height: max-content;
+    margin: 15px;
+
+    vertical-align: middle;
+}
+
+.error h3 {
+	color: black;
+	margin: 0;
+}
+
+.error text {
+	color: black;
+}
+
 ul {
 	list-style-type: circle;
 }
