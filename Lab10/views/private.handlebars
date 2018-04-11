@@ -1,26 +1,22 @@
-<article>
-  <table class="user-info">
-    <th>
-      <td>
-        <h2>{{user.username}}</h2>
-      </td>
-      <td><a href="/logout">Not {{user.username}}? Logout.</a></td>
-    </th>
-    <tr>
-      <td>First Name:</td>
-      <td>{{user.firstname}}</td>
-    </tr>
-    <tr>
-      <td>Last Name:</td>
-      <td>{{user.lastname}}</td>
-    </tr>
-    <tr>
-      <td>Profession:</td>
-      <td>{{user.profession}}</td>
-    </tr>
-    <tr>
-      <td>Bio:</td>
-      <td>{{user.bio}}</td>
-    </tr>
-  </table>
-</article>
+<table class="user-info">
+  <tr>
+    <th>{{user.username}}</th>
+    <td class="logout-box"><a href="/logout">Not {{user.username}}? Logout.</a></td>
+  </tr>
+  <tr>
+    <td>First Name:</td>
+    <td>{{user.firstname}}</td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td>{{user.lastname}}</td>
+  </tr>
+  <tr>
+    <td>Profession:</td>
+    <td>{{user.profession}}</td>
+  </tr>
+  <tr>
+    <td>Bio:</td>
+    <td>{{user.bio}}</td>
+  </tr>
+</table>
