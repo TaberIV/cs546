@@ -3,8 +3,8 @@ const router = express.Router();
 const userData = require("../data/users");
 
 router.get("/", async (req, res) => {
-	const sessionID = req.cookies.sessionID;
-	var user = await userData.getUserBySessionID(sessionID);
+	const AuthCookie = req.cookies.AuthCookie;
+	var user = await userData.getUserBySessionID(AuthCookie);
 	var authenticated = user !== undefined;
 
 	if (authenticated) {

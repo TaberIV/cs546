@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
 	if (authenticated) {
 		// Create cookie
 		var sID = uuid();
-		res.cookie("sessionID", sID);
+		res.cookie("AuthCookie", sID);
 		userData.addUserSessionID(username, sID);
 
 		res.redirect("/private");

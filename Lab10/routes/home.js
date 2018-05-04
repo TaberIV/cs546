@@ -5,7 +5,7 @@ const userData = require("../data/users");
 router.get("/", async (req, res) => {
 	var authenticated;
 	try {
-		var authenticated = await userData.getUserBySessionID(req.cookies.sessionID) !== undefined;
+		var authenticated = await userData.getUserBySessionID(req.cookies.AuthCookie) !== undefined;
 	} catch (e) {
 		authenticated = false;
 	}

@@ -6,8 +6,8 @@ router.get("/", (req, res) => {
 		title: "Logout"
 	}
 
-	res.cookie("sessionID", "", {expires: new Date()});
-	res.clearCookie("sessionID");
+	res.cookie("AuthCookie", "", {expires: new Date()});
+	res.clearCookie("AuthCookie");
 
 	res.render("logout", data);
 });
